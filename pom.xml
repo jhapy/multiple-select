@@ -3,12 +3,12 @@
 
     <groupId>com.vaadin.componentfactory</groupId>
     <artifactId>multiple-select</artifactId>
-    <version>3.0.1</version>
+    <version>3.0.2</version>
     <name>Multiple Select</name>
     <description>Integration of vcf-multi-select for Vaadin platform</description>
 
     <properties>
-        <vaadin.version>18.0.0</vaadin.version>
+        <vaadin.version>21.0.1</vaadin.version>
 
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -228,7 +228,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-javadoc-plugin</artifactId>
-                        <version>3.0.1</version>
+                        <version>3.2.0</version>
                         <executions>
                             <execution>
                                 <id>attach-javadocs</id>
@@ -240,7 +240,7 @@
                         </executions>
                         <configuration>
                             <quiet>true</quiet>
-                            <additionalparam>-Xdoclint:none</additionalparam>
+                            <doclint>all,-missing</doclint>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -340,7 +340,7 @@
                     </plugin>
                     <plugin>
                         <artifactId>maven-resources-plugin</artifactId>
-                        <version>3.1.0</version>
+                        <version>3.2.0</version>
                         <executions>
                             <execution>
                                 <!-- Since the view class is defined in test, after compilation

@@ -71,18 +71,20 @@ public class MultipleSelect<T>
 
     private static <T> Set<T> presentationToModel(MultipleSelect<T> select,
             JsonArray presentation) {
+
         Set<T> modelValue = IntStream.range(0, presentation.length())
                 .map(i -> (int) presentation.getNumber(i))
-                .filter(i -> i < select.items.size())
-                .mapToObj(index -> select.items.get(index))
+                .filter(i -> i < select.getItems().count())
+                .mapToObj(index -> select.getItems().collect(Collectors.toList()).get(index).getItem())
                 .collect(Collectors.toSet());
         return Collections.unmodifiableSet(modelValue);
     }
 
     private static <T> JsonArray modelToPresentation(MultipleSelect<T> select,
             Set<T> model) {
+        List<T> elts = select.getItems().map(VaadinItem::getItem).collect(Collectors.toList());
         JsonArray array = Json.createArray();
-        model.stream().map(select.items::indexOf)
+        model.stream().map(elts::indexOf)
                 .forEach(index -> array.set(array.length(), index));
         return array;
     }
